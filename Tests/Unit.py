@@ -3,6 +3,7 @@ import requests
 import sys
 sys.path.append("..")
 import getcountrydata
+import requesthandler
 
 
 class getcountrydatapyTest(unittest.TestCase):
@@ -14,6 +15,21 @@ class getcountrydatapyTest(unittest.TestCase):
 
 	def test_getfakecountrydata(self):
 		self.assertEqual(getcountrydata.getdata("dsaefaeaeda"),None)
+
+	def test_CheckNullObjtrue(self):
+		self.assertEqual(requesthandler.CheckNullObj(None),True)
+
+	def test_CheckNullObjfalse(self):
+		self.assertEqual(requesthandler.CheckNullObj("None"),False)
+
+	def test_CheckNullQuerytrue(self):
+		self.assertEqual(requesthandler.CheckNullQuery(None),True)
+
+	def test_CheckNullQueryfalse(self):
+		self.assertEqual(requesthandler.CheckNullQuery("None"),False)
+
+	#def test_ParseQuery(self):
+
 
 											
 #class requesthandlerTest(unittest.TestCase):
