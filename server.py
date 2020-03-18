@@ -11,9 +11,8 @@ def home():
 
 @app.route("/country/guide/<string:country>")
 def countryroute(country):
-	obj = getcountrydata(country)
-	return obj
-	
+	obj = getcountrydata.getdata(country)
+	return obj[0]
     
 if __name__ == "__main__":
     app.run(debug=True)
