@@ -3,3 +3,5 @@ flask-restful
 pytest
 requests
 request
+codecov
+coverage
