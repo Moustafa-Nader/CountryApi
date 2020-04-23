@@ -8,7 +8,7 @@ import requesthandler
 class Test_requestHandler(unittest.TestCase):
 	def test_getActualCountry(self):
 		with server.app.test_client() as client:
-			resp = client.get("/country/guide/egypt")
+			resp = client.get("/country/guide/egypt?info")
 		args = teststring1
 		self.assertEqual(resp.json,args)
 
