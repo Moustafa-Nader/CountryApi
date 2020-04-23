@@ -5,10 +5,10 @@ import getcountrydata
 class requesthandler(Resource):
     def get(self,country ):
         obj = getcountrydata.getdata(country)
-        if obj == None:
+        if CheckNullQuery(obj):
             return "404 Country Not found"
         parsedQuery = ParseQuery()
-        if parsedQuery == None :
+        if CheckNullQuery(parsedQuery) :
             return obj
         splitted = parsedQuery.split(",")
         result = {}
@@ -19,10 +19,20 @@ class requesthandler(Resource):
                 result[info] = "invalid"
         return result
 
+def CheckNullObj(object):
+    if object == None:
+        return True
+    return False
+
+def CheckNullQuery(query):
+    if query == None:
+        return True
+    return False
+
 
 def ParseQuery():        
-        parser = parserrequest.RequestParser()
-        parser.add_argument("info")  
-        args = 	parser.parse_args()
-        return args["info"]
+    parser = parserrequest.RequestParser()
+    parser.add_argument("info")  
+    args = 	parser.parse_args()
+    return args["info"]
 
