@@ -5,14 +5,14 @@ import getcountrydata
 import requesthandler
 
 class Test_requestHandler(unittest.TestCase):
-	def getActualCountry(self):
+	def test_getActualCountry(self):
 		args = teststring1
 		self.assertEqual(requesthandler.requesthandler.get("Egypt"),args)
 
-	def getFakeCountry(self):
+	def test_getFakeCountry(self):
 		self.assertEqual(requesthandler.requesthandler.get("FakeCountry"),"404 Country Not found")
 
-	def getPopEgypt():
+	def test_getPopEgypt(self):
 		self.assertEqual(requesthandler.requesthandler.get("Egypt")["population"],"91290000")
 
 

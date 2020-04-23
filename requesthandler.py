@@ -18,7 +18,7 @@ class requesthandler(Resource):
             else :
                 result[info] = "invalid"
         return result
-
+        
 def CheckNullObj(object):
     if object == None:
         return True

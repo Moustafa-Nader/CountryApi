@@ -8,7 +8,7 @@ api = Api(app)
 api.add_resource(requesthandler , "/country/guide/<string:country>")
 
 if __name__ == "__main__":
-    app.run(debug=True)
+	app.run(debug=True)
 #@app.route("/")
 #def home():
 #    return "Hello, World!"
