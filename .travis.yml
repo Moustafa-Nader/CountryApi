@@ -4,11 +4,6 @@ before_script:
 - pip install --user -r requirements.txt
 - cd Tests
 script:
-- coverage run Unit.py
-- coverage run Integration.py
-- python Unit.py
-- python Integration.py
-env:
-    - CODECOV_TOKEN="c9c0eb7b-7d96-4458-8e12-076c9d09b724"
+- coverage run Integration.py Unit.py
 after_success:
 - codecov
