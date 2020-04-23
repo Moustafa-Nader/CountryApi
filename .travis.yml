@@ -6,5 +6,7 @@ before_script:
 script:
 - python Unit.py
 - python Integration.py
+env:
+    - CODECOV_TOKEN="c9c0eb7b-7d96-4458-8e12-076c9d09b724"
 after_success:
 - bash < (curl -s https://codecov.io/bash)
