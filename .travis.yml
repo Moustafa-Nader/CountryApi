@@ -4,6 +4,6 @@ before_script:
 - pip install --user -r requirements.txt
 - cd Tests
 script:
-- coverage run Integration.py Unit.py
+- coverage run -m unittest Integration Unit
 after_success:
 - codecov
