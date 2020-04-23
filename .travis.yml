@@ -5,3 +5,4 @@ before_script:
 - cd Tests
 script:
 - python Unit.py
+- python Integration.py

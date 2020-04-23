@@ -1,19 +1,26 @@
 import unittest
 import sys
 sys.path.append("..")
+import server
 import getcountrydata
 import requesthandler
 
 class Test_requestHandler(unittest.TestCase):
 	def test_getActualCountry(self):
+		with server.app.test_client() as client:
+			resp = client.get("/country/guide/egypt")
 		args = teststring1
-		self.assertEqual(requesthandler.requesthandler.get("Egypt"),args)
+		self.assertEqual(resp.json,args)
 
 	def test_getFakeCountry(self):
-		self.assertEqual(requesthandler.requesthandler.get("FakeCountry"),"404 Country Not found")
+		with server.app.test_client() as client:
+			resp = client.get("/country/guide/FakCountry")
+		self.assertEqual(resp.json,"404 Country Not found")
 
 	def test_getPopEgypt(self):
-		self.assertEqual(requesthandler.requesthandler.get("Egypt")["population"],"91290000")
+		with server.app.test_client() as client:
+			resp = client.get("/country/guide/egypt?info=population")
+		self.assertEqual(resp.json,{'population': 91290000})
 
 
 
