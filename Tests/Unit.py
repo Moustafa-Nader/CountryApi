@@ -34,5 +34,4 @@ class getcountrydatapyTest(unittest.TestCase):
                                             
 #class requesthandlerTest(unittest.TestCase):
     #def test_parseQuery(self):
-if __name__ == '__main__':
-    unittest.main(argv=['first-arg-is-ignored'], exit=False)
+
