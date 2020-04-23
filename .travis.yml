@@ -1,7 +1,6 @@
 language: bash
 install: true
 before_script:
-- pip update
 - pip install -r requirements.txt
 - cd Tests
 script:
