@@ -1,0 +1,8 @@
+language: bash
+install: true
+before_script:
+- pip install --user -r requirements.txt
+- cd Tests
+script:
+- python Unit.py
+- python Integration.py
