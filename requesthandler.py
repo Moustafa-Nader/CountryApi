@@ -1,15 +1,26 @@
 from flask_restful import Resource 
 import flask_restful.reqparse as parserrequest
 import getcountrydata
+import json
+import os
+cachedData = {}
 
 class requesthandler(Resource):
     def get(self,country ):
+        parsedQuery = ParseQuery()
+        if CheckNullQuery(parsedQuery) == False :
+            dat = country + "," + parsedQuery
+            if dat in cachedData:
+                return cachedData[dat]
+
         obj = getcountrydata.getdata(country)
         if CheckNullQuery(obj):
             return "404 Country Not found"
-        parsedQuery = ParseQuery()
-        if CheckNullQuery(parsedQuery) :
+        
+        if CheckNullQuery(parsedQuery) or parsedQuery == "" :
+            cachedData[dat] = obj
             return obj
+
         splitted = parsedQuery.split(",")
         result = {}
         for info in splitted:
@@ -17,6 +28,7 @@ class requesthandler(Resource):
                 result[info] = obj[info]
             else :
                 result[info] = "invalid"
+        cachedData[dat] = result
         return result
 
 def CheckNullObj(object):
