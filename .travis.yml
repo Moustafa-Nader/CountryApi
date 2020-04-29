@@ -1,7 +1,6 @@
 language: bash
 install: true
 before_script:
-- pip install unittest
 - pip install --user -r requirements.txt
 - cd Tests
 script:
