@@ -5,5 +5,4 @@ requests
 request
 codecov
 coverage
-unittest
 Mock
