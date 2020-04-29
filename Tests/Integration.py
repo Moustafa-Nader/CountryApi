@@ -4,13 +4,14 @@ sys.path.append("..")
 import server
 import getcountrydata
 import requesthandler
+from mock import Mock
 
 class Test_requestHandler(unittest.TestCase):
 	def test_getActualCountry(self):
 		with server.app.test_client() as client:
-			resp = client.get("/country/guide/egypt?info")
+			resp = client.get("/country/guide/egypt?info=population")
 		args = teststring1
-		self.assertEqual(resp.json,args)
+		self.assertEqual(resp.json,{'population': 91290000})
 
 	def test_getFakeCountry(self):
 		with server.app.test_client() as client:
@@ -21,6 +22,14 @@ class Test_requestHandler(unittest.TestCase):
 		with server.app.test_client() as client:
 			resp = client.get("/country/guide/egypt?info=population")
 		self.assertEqual(resp.json,{'population': 91290000})
+	
+	def test_cachedData(self):
+		Handler = requesthandler
+		cached = Handler.cachedData
+		Handler.ParseQuery =  Mock(return_value= "population")
+		Handler.requesthandler().get("egypt")
+		Handler.requesthandler().get("egypt")
+		self.assertEqual(len(cached) , 1)
 
 
 
