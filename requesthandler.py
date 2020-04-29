@@ -6,7 +6,7 @@ import os
 cachedData = {}
 
 class requesthandler(Resource):
-    def get(self,country ):
+    def get(self,country):
         parsedQuery = ParseQuery()
         if CheckNullQuery(parsedQuery) == False :
             dat = country + "," + parsedQuery
