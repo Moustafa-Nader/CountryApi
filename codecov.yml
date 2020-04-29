@@ -11,6 +11,7 @@ status:
     enabled: yes
     target: 90
     threshold: null
+    enable_partials: yes
  patch: yes
  changes: no
 comment:
